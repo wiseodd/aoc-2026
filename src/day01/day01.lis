@@ -1,0 +1,7 @@
+pub fn part1(input: string) -> string {
+  return ""
+}
+
+pub fn part2(input: string) -> string {
+  return ""
+}

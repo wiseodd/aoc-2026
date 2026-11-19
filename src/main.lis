@@ -1,0 +1,31 @@
+import "go:fmt"
+import "go:os"
+
+import "day01"
+import "utils"
+
+fn main() {
+  let [_, day, part] = os.Args else {
+    fmt.Println("usage: lis run -- {day} {part}")
+    return
+  }
+
+  let maybe_solve: Option<fn(string) -> string> = match (day, part) {
+    ("1", "1") => Some(day01.part1),
+    ("1", "2") => Some(day01.part2),
+    _ => None,
+  }
+
+  let Some(solve) = maybe_solve else {
+    fmt.Println("Solver not found!")
+    return
+  }
+
+  let path = fmt.Sprintf("data/day%02s-part%02s.txt", day, part)
+  let Ok(input) = utils.read_text(path) else {
+    fmt.Println("Input not found!")
+    return
+  }
+
+  fmt.Println(solve(input))
+}

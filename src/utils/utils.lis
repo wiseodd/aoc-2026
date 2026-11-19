@@ -1,0 +1,6 @@
+import "go:os"
+
+pub fn read_text(path: string) -> Result<string, error> {
+  let bytes = os.ReadFile(path)?
+  Ok(bytes as string)
+}
